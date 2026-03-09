@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Plane } from 'lucide-react';
 import { FlightForm } from '@/components/FlightForm';
@@ -8,7 +10,7 @@ import { optimizeFlight } from '@/services/flightService';
 import type { FlightFormData, FlightOptimizeResponse } from '@/types/flight';
 import { useToast } from '@/hooks/use-toast';
 
-const Index = () => {
+export default function IndexPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<FlightOptimizeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -102,12 +104,10 @@ const Index = () => {
       <footer className="border-t border-border bg-card py-6">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm text-muted-foreground">
-            Flight Optimization Tool • Powered by FastAPI
+            Flight Optimization Tool • Powered by Next.js
           </p>
         </div>
       </footer>
     </div>
   );
-};
-
-export default Index;
+}

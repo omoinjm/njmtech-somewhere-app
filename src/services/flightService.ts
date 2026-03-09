@@ -1,8 +1,7 @@
-import { API_ENDPOINTS } from '@/config/api';
 import type { FlightOptimizeRequest, FlightOptimizeResponse } from '@/types/flight';
 
 export async function optimizeFlight(data: FlightOptimizeRequest): Promise<FlightOptimizeResponse> {
-  const response = await fetch(API_ENDPOINTS.OPTIMIZE_FLIGHT, {
+  const response = await fetch('/api/flight/optimize', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -11,8 +10,8 @@ export async function optimizeFlight(data: FlightOptimizeRequest): Promise<Fligh
   });
 
   if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(errorText || `Request failed with status ${response.status}`);
+    const errorData = await response.json().catch(() => ({ detail: 'Request failed' }));
+    throw new Error(errorData.detail || `Request failed with status ${response.status}`);
   }
 
   return response.json();
