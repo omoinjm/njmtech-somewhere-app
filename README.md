@@ -1,114 +1,77 @@
-================================================================================
-                           FLIGHT OPTIMIZATION FRONTEND
-================================================================================
+# Flight Optimizer ✈️
 
-A React web application for finding the most cost-efficient flight routes.
+A modern, high-performance web application built with **Next.js** to find the most cost-efficient flight routes based on price per kilometer.
 
---------------------------------------------------------------------------------
-INSTALLATION
---------------------------------------------------------------------------------
+## 🚀 Features
 
-1. Ensure you have Node.js (v18+) and npm installed.
+- **Next.js Backend:** API logic is handled directly within Next.js API Routes, eliminating the need for an external Python server.
+- **Turbopack:** Ultra-fast development builds and HMR.
+- **Optimal Route Calculation:** Calculates distance using the Haversine formula to determine the "Best Value" (Price/KM).
+- **Modern UI:** Built with **shadcn/ui**, **Tailwind CSS**, and **Framer Motion** for smooth animations.
+- **Type Safe:** Fully implemented in TypeScript.
+- **Robust Testing:** Integrated **Playwright** for end-to-end testing.
 
-2. Install dependencies:
-   
-   npm install
+## 🛠️ Tech Stack
 
---------------------------------------------------------------------------------
-CONFIGURATION
---------------------------------------------------------------------------------
+- **Frontend/Backend:** [Next.js 15+](https://nextjs.org/) (App Router)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Components:** [shadcn/ui](https://ui.shadcn.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Testing:** [Playwright](https://playwright.dev/)
+- **API:** [Kiwi Tequila API](https://tequila.kiwi.com/)
 
-The backend URL defaults to: http://localhost:8000
+## 📦 Getting Started
 
-To change the backend URL, create a .env file in the project root:
+### 1. Prerequisites
+- Node.js 18.17 or later
+- A Kiwi Tequila API Key
 
-   VITE_API_URL=http://your-backend-url:port
+### 2. Installation
+```bash
+npm install
+```
 
-Or set the environment variable before running:
+### 3. Environment Setup
+Create a `.env.local` file in the root directory and add your Kiwi API Key:
+```env
+KIWI_API_KEY=your_api_key_here
+```
 
-   VITE_API_URL=http://your-backend-url:port npm run dev
+### 4. Development
+Run the development server with Turbopack:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
---------------------------------------------------------------------------------
-RUNNING THE APP
---------------------------------------------------------------------------------
+### 5. Production
+Build the application for production:
+```bash
+npm run build
+npm run start
+```
 
-Development mode:
-   
-   npm run dev
+## 🧪 Testing
 
-   The app will be available at: http://localhost:5173
+Run End-to-End tests using Playwright:
+```bash
+# Install browsers (first time only)
+npx playwright install
 
-Production build:
+# Run tests
+npm run test
+```
 
-   npm run build
-   npm run preview
+## 📂 Project Structure
 
---------------------------------------------------------------------------------
-API ENDPOINT
---------------------------------------------------------------------------------
+- `src/app/` - Next.js App Router (Pages & API Routes)
+- `src/components/` - React components (UI and Feature-based)
+- `src/lib/` - Shared utilities and Kiwi API integration logic
+- `src/services/` - Frontend service layer for API calls
+- `src/types/` - TypeScript definitions
+- `tests/` - Playwright E2E tests
 
-The frontend calls a single API endpoint:
+## 📄 License
 
-   POST /api/flight/optimize
-
-Request body:
-   {
-     "from_city": "London",
-     "to_cities": ["Paris", "Berlin", "Rome"]
-   }
-
-Response:
-   {
-     "best_city": "Paris",
-     "price_per_km": 0.42,
-     "currency": "USD",
-     "distance_km": 3421,
-     "total_price": 1437
-   }
-
---------------------------------------------------------------------------------
-PROJECT STRUCTURE
---------------------------------------------------------------------------------
-
-src/
-├── components/           # React components
-│   ├── FlightForm.tsx    # Input form for cities
-│   ├── FlightResult.tsx  # Results display
-│   ├── LoadingPlane.tsx  # Loading animation
-│   ├── ErrorMessage.tsx  # Error display
-│   └── ui/               # UI primitives (Button, Input, etc.)
-├── config/
-│   └── api.ts            # API configuration
-├── services/
-│   └── flightService.ts  # API service layer
-├── types/
-│   └── flight.ts         # TypeScript interfaces
-├── pages/
-│   └── Index.tsx         # Main page component
-└── hooks/                # Custom React hooks
-
---------------------------------------------------------------------------------
-FEATURES
---------------------------------------------------------------------------------
-
-- Departure city input
-- Multiple destination cities (comma-separated)
-- Loading state with animation
-- Error handling with retry option
-- Beautiful result display showing:
-  - Best city destination
-  - Price per kilometer
-  - Total distance
-  - Total price
-
---------------------------------------------------------------------------------
-TECH STACK
---------------------------------------------------------------------------------
-
-- React 18 (Functional components + Hooks)
-- TypeScript
-- Vite (Build tool)
-- Tailwind CSS (Styling)
-- Lucide React (Icons)
-
-================================================================================
+This project is for educational/interview purposes.
